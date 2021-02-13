@@ -14,6 +14,7 @@ module.exports = {
       logo: {
         alt: 'Intellischool Docs',
         src: 'img/logo.svg',
+        srcDark: 'img/logo_dark.svg'
       },
       items: [
         {
