@@ -8,38 +8,41 @@ import styles from './styles.module.css';
 
 const features = [
   {
-    title: 'Easy to Use',
-    imageUrl: 'img/undraw_docusaurus_mountain.svg',
+    title: 'Integrate your data',
+    link: 'read/api',
+    imageUrl: 'img/api.svg',
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Integrate your application with the Intellischool Data Platform using
+        our GraphQL or SIF (RESTful) APIs.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    imageUrl: 'img/undraw_docusaurus_tree.svg',
+    title: 'Understand our platform',
+    link: 'read/data-platform',
+    imageUrl: 'img/data-platform.svg',
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Learn more about the architecture of the Intellischool Data Platform and
+        our distributed data model.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    imageUrl: 'img/undraw_docusaurus_react.svg',
+    title: 'Implement LTI',
+    link: 'read/lti',
+    imageUrl: 'img/lti.svg',
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Integrate Intellischool products into your LTI-compatible system with
+        LTI Launch and LTI Services.
       </>
     ),
   },
 ];
 
-function Feature({imageUrl, title, description}) {
+function Feature({imageUrl, title, description, link}) {
   const imgUrl = useBaseUrl(imageUrl);
   return (
     <div className={clsx('col col--4', styles.feature)}>
@@ -48,8 +51,17 @@ function Feature({imageUrl, title, description}) {
           <img className={styles.featureImage} src={imgUrl} alt={title} />
         </div>
       )}
-      <h3>{title}</h3>
+      <h3><Link to={useBaseUrl(link)}>{title}</Link></h3>
       <p>{description}</p>
+      <div className="text--center">
+        <Link
+          className={clsx(
+            'button button--outline button--secondary'
+          )}
+          to={useBaseUrl(link)}>
+          Get started
+        </Link>
+      </div>
     </div>
   );
 }
@@ -65,16 +77,6 @@ function Home() {
         <div className="container">
           <h1 className="hero__title">{siteConfig.title}</h1>
           <p className="hero__subtitle">{siteConfig.tagline}</p>
-          <div className={styles.buttons}>
-            <Link
-              className={clsx(
-                'button button--outline button--secondary button--lg',
-                styles.getStarted,
-              )}
-              to={useBaseUrl('docs/')}>
-              Get Started
-            </Link>
-          </div>
         </div>
       </header>
       <main>
