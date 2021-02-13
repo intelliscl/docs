@@ -1,0 +1,29 @@
+name: deploy
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install packages
+      run: npm install --no-package-lock
+    - name: Build Docusaurus environment
+      run: npm run build
+    - name: Deploy to docs storage
+      uses: bacongobbler/azure-blob-storage-upload@v1.1.1
+      with:
+        connection_string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+        source_dir: 'build'
+        container_name: '$web'
+        sync: true
