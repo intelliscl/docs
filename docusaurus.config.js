@@ -1,7 +1,7 @@
 module.exports = {
   title: 'Intellischool Docs',
   tagline: 'Explore our guides and examples to integrate with Intellischool products.',
-  url: 'https://intelliscl.github.com/docs',
+  url: 'https://docs.intellischool.co',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -109,7 +109,7 @@ module.exports = {
           path: 'docs',
           routeBasePath: 'read',
           editUrl:
-            'https://github.com/intellischool/docs/edit/master/',
+            'https://github.com/intelliscl/docs/edit/master/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
