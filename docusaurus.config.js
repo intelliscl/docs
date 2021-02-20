@@ -9,6 +9,10 @@ module.exports = {
   organizationName: 'intelliscl', // Usually your GitHub org/user name.
   projectName: 'docs', // Usually your repo name.
   themeConfig: {
+    algolia: {
+      apiKey: '1cc453055e64138fa113f24f2c5c8571',
+      indexName: 'intellischool'
+    },
     navbar: {
       //title: 'My Site',
       logo: {
