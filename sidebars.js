@@ -10,6 +10,6 @@ module.exports = {
     "Data Platform": ['data-platform']
   },
   lti: {
-    "Learning Tools Interoperability": ['lti','lti/launch','lti/troubleshooting']
+    "Learning Tools Interoperability": ['lti','lti/launch','lti/enhanced-embedding','lti/troubleshooting']
   }
 };
