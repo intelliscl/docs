@@ -123,8 +123,8 @@ The launch event is only ever _emitted from_ an embedded Intellischool product. 
     "location": {
       "url": "https://hostname.net/pathname?param1=123&param2=abc#anchor-fragment",
       "pathname": "/pathname",
-      "search": "param1=123&param2=abc",
-      "hash": "anchor-fragment"
+      "search": "#param1=123&param2=abc",
+      "hash": "?anchor-fragment"
     },
     "title": "My dashboard",
     "authenticated": true
@@ -157,8 +157,8 @@ These events are **bi-directional**:
     "location": {
       "url": "https://hostname.net/pathname?param1=123&param2=abc#anchor-fragment",
       "pathname": "/pathname",
-      "search": "param1=123&param2=abc",
-      "hash": "anchor-fragment"
+      "search": "?param1=123&param2=abc",
+      "hash": "#anchor-fragment"
     }
   }
 }
