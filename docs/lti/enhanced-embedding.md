@@ -114,7 +114,7 @@ Represents a launch event - for example, a user launching into a dashboard in Al
 This object is only available for partners with a whitelabel agreement, and is emitted by embedded consoles only - for example, a whitelabelled Albitros console within another product.
 :::
 
-The launch event is only ever _emitted from_ an embedded Intellischool product. Launch events dispatched to an embedded product will be ignored.
+A `launch` event is designed to give parent applications the chance to launch the given resource via their own means - for example, in a modal window, or a different frame. They __must be acknowledged__ by the parent application within 500ms (half of one second), or the embedded application will launch the requested resource directly.
 
 ```json title="Launch event object"
 {
@@ -140,6 +140,20 @@ The `authenticated` value defines whether or not the user has already been authe
 
 If the `authenticated` value is `false`, your application should launch the given `url` using LTI Launch.
 
+```json title="Launch response object"
+{
+  "intellischool": {
+    "action": "launch",
+    "status": "success"
+  }
+}
+```
+
+If a parent application is launching the given resource (rather than the embedded application launching), then the parent should send a message to the embedded application that indicates a status of `success`.
+
+If your application is not launching, but you want to expediate the process and skip the 500ms time-out, respond with a `status` value of `ignored`.
+
+Values other than `status` or `ignored` will result in an error being logged in the end user's browser console, and the embedded application will continue the launch after the timeout period.
 
 
 ### Navigation
