@@ -116,6 +116,9 @@ This object is only available for partners with a whitelabel agreement, and is e
 
 A `launch` event is designed to give parent applications the chance to launch the given resource via their own means - for example, in a modal window, or a different frame. They __must be acknowledged__ by the parent application within 500ms (half of one second), or the embedded application will launch the requested resource directly.
 
+
+#### Listening for launch events
+
 ```json title="Launch event object"
 {
   "intellischool": {
@@ -139,6 +142,9 @@ The `title` value provides a meaningful name for the resource being launched in 
 The `authenticated` value defines whether or not the user has already been authenticated at the destination `url` through a browser session, cookie or other authentication mechanism. When `true`, your application should not attempt to alter or attach a token to the given `url`.
 
 If the `authenticated` value is `false`, your application should launch the given `url` using LTI Launch.
+
+
+#### Acknowledging launch events
 
 ```json title="Launch response object"
 {
