@@ -63,8 +63,10 @@ window.addEventListener("message", event => {
     {
 
       case "navigate":
-        let { url, path } = event.data.intellischool;
-        // Do something with the url and/or path received
+        if (event.data.intellischool.location) {
+          let { url, pathname, search, hash } = event.data.intellischool.location;
+          // Do something with the url and/or path received
+        }
         return;
 
       default:
@@ -118,15 +120,19 @@ The launch event is only ever _emitted from_ an embedded Intellischool product. 
 {
   "intellischool": {
     "action": "launch",
-    "url": "https://hostname.net/pathname",
-    "path": "/pathname",
+    "location": {
+      "url": "https://hostname.net/pathname?param1=123&param2=abc#anchor-fragment",
+      "pathname": "/pathname",
+      "search": "param1=123&param2=abc",
+      "hash": "anchor-fragment"
+    },
     "title": "My dashboard",
     "authenticated": true
   }
 }
 ```
 
-The `url` and `path` values can be used to determine where your application should be directing the user to launch the dashboard.
+Either the `url` or a combination of the `pathname`, `search` and `hash` values can be used to determine where your application should be directing the user to launch the dashboard. Where there are no query parameters or no window fragment in the URL, the launch request will omit those parameters.
 
 The `title` value provides a meaningful name for the resource being launched in to. It can be used for naming modals or windows, or providing other context to your users.
 
@@ -148,12 +154,16 @@ These events are **bi-directional**:
 {
   "intellischool": {
     "action": "navigate",
-    "url": "https://hostname.net/pathname",
-    "path": "/pathname"
+    "location": {
+      "url": "https://hostname.net/pathname?param1=123&param2=abc#anchor-fragment",
+      "pathname": "/pathname",
+      "search": "param1=123&param2=abc",
+      "hash": "anchor-fragment"
+    }
   }
 }
 ```
 
-Events _emitted from_ an embedded Intellischool product will _always_ contain both `url` and `path` values.
+Events _emitted from_ an embedded Intellischool product will _always_ contain the `url` and `pathname` + `search` + `hash` values.
 
-Events _dispatched to_ an embedded Intellischool product _may_ container either or both of the `url` and `path` values.
+Events _dispatched to_ an embedded Intellischool product _may_ container either or both of the `url` and `path` + `search` + `hash` values.
