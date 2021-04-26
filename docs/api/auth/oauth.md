@@ -126,7 +126,7 @@ const token = new Buffer(credentials).toString('base64');
 
 let response = await fetch('https://core.intellischool.net/connect/token',{
   method: 'post',
-  headers: { Authorization: `Basic ${credentials}`},
+  headers: { Authorization: `Basic ${token}`},
   body: 'grant_type=authorization_code&code=CODE&redirect_uri=URI'
 })
 .then(res => res.json())
@@ -230,7 +230,7 @@ const token = new Buffer(credentials).toString('base64');
 
 let response = await fetch('https://core.intellischool.net/connect/token',{
   method: 'post',
-  headers: { Authorization: `Basic ${credentials}`},
+  headers: { Authorization: `Basic ${token}`},
   body: 'grant_type=refresh_token&refresh_token=REFRESHTOKEN'
 })
 .then(res => res.json())
@@ -263,7 +263,7 @@ const token = new Buffer(credentials).toString('base64');
 
 let response = await fetch('https://core.intellischool.net/connect/revocation',{
   method: 'post',
-  headers: { Authorization: `Basic ${credentials}`},
+  headers: { Authorization: `Basic ${token}`},
   body: 'token=REFRESHTOKEN'
 })
 .then(res => res.json())
