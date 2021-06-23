@@ -92,7 +92,7 @@ const onButtonClicked = () =>
 function dispatchIntellischoolEvent( action, data = {} )
 {
 
-  embedded_iframe.postMessage({
+  embedded_iframe.contentWindow.postMessage({
     intellischool: {
       action,
       ...data
